@@ -1,0 +1,30 @@
+package project1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class staticdropdown {
+
+	public static void main(String[] args) {
+    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers//chromedriver.exe");
+    
+    WebDriver driver = new ChromeDriver();
+    
+    driver.get("https://in.via.com/hotel");
+    driver.manage().window().maximize();
+    
+    WebElement staticDropdown = driver.findElement(By.id("nationalityCountry"));
+    Select dropdown = new Select(staticDropdown);
+    
+    dropdown.selectByValue("164981");
+    System.out.println(dropdown.getFirstSelectedOption().getText());
+    WebElement sttaticDropdown = driver.findElement(By.id("residenceCountry"));
+    Select droopdown = new Select(sttaticDropdown);
+    droopdown.selectByValue("164981[2]");
+    System.out.println(droopdown.getFirstSelectedOption().getText());
+	}
+
+}
