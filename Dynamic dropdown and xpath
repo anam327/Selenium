@@ -1,0 +1,31 @@
+package project1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+public class Dynamicdropdown {
+
+	public static void main(String[] args) {
+    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers//chromedriver.exe");
+    WebDriver driver = new ChromeDriver();
+    driver.get("https://book.spicejet.com/search.aspx");
+    driver.manage().window().maximize();
+    
+    driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchVieworiginStation1_CTXT")).click();
+    driver.findElement(By.cssSelector("a[value='IXG']")).click();
+    driver.findElement(By.xpath("(//a[@value='HYD'])[2]")).click();
+    driver.findElement(By.cssSelector("a[data-date='28']")).click();
+    driver.findElement(By.id("custom_date_picker_id_2")).click();
+    driver.findElement(By.className("ui-state-hover")).click();
+    
+    WebElement staticDropdown = driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchView_DropDownListCurrency")); 
+    Select dropdown = new Select(staticDropdown);
+    dropdown.selectByValue("BDT");
+    System.out.println(dropdown.getFirstSelectedOption().getText());
+	}
+
+}
